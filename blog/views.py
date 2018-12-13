@@ -1,12 +1,37 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.http import HttpResponse
+
+posts = [
+
+    {
+
+        'author': 'sparks',
+        'title': 'Blog Post 1',
+        'content': 'Pish',
+        'date_posted': 'December 12, 3939',
+        'ps': 'Keep fighting'
+
+    },
+
+    {
+
+        'author': 'muffy',
+        'title': 'Blog Post 2',
+        'content': 'Sham',
+        'date_posted': 'November 25, 4000',
+        'ps': 'no reteat no surrender'
+
+    }
+]
 
 
 def home(request):
-    return HttpResponse('<h1>Hello Clarice</h1>')
+    context = {
+        'posts': posts
+    }
+    return render(request, 'blog/home.html', context)
 
 
 def about(request):
-    return HttpResponse('<h1>About Clarice</h1>')
+    return render(request, 'blog/about.html', {'title': 'About'})
